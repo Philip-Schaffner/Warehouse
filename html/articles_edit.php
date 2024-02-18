@@ -42,8 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
 <html>
 <head>
     <title>Edit Article</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
+    <?php include 'side_nav.php'; ?>
+    <div class="main-content">
     <h2>Edit Article</h2>
     <form action="articles_edit.php?id=<?php echo htmlspecialchars($articleId); ?>" method="post">
         <div>
@@ -68,5 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
             <input type="submit" name="update" value="Update">
         </div>
     </form>
+    </div>
 </body>
 </html>

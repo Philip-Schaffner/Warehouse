@@ -29,8 +29,12 @@ $orders = $ordersStmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>Orders Master-Detail</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
+    <?php include 'side_nav.php'; ?>
+    <div class="main-content">
     <h2>Orders</h2>
     <?php foreach ($orders as $order): ?>
         <div>
@@ -71,5 +75,6 @@ $orders = $ordersStmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
         </div>
     <?php endforeach; ?>
+    </div>
 </body>
 </html>

@@ -53,8 +53,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
+    <?php include 'side_nav.php'; ?>
+    <div class="main-content">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div>
             <label>Username</label>
@@ -68,5 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="submit" value="Login">
         </div>
     </form>
+    </div>
 </body>
 </html>

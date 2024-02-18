@@ -39,8 +39,11 @@ $categories = $categoryStmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>Articles Management</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <?php include 'side_nav.php'; ?>
+    <div class="main-content">
     <table>
         <tr>
             <th>ID</th>
@@ -78,5 +81,6 @@ $categories = $categoryStmt->fetchAll(PDO::FETCH_ASSOC);
             </tr>
         </form>
     </table>
+    </div>
 </body>
 </html>

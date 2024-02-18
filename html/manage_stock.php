@@ -46,8 +46,12 @@ $stocks = $stocksStmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>Manage Stock</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
+    <?php include 'side_nav.php'; ?>
+    <div class="main-content">
     <h2>Stock Management</h2>
     <table>
         <tr>
@@ -91,5 +95,6 @@ $stocks = $stocksStmt->fetchAll(PDO::FETCH_ASSOC);
             </tr>
         </form>
     </table>
+    </div>
 </body>
 </html>

@@ -1,0 +1,99 @@
+/* Early '90s Style CSS */
+body {
+    background-color: #c0c0c0; /* classic grey background */
+    font-family: 'Times New Roman', Times, serif; /* system font */
+    color: #000000;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h2, h3 {
+    color: #000080; /* navy blue headings */
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+  }
+  
+  th, td {
+    border: 1px solid #000000; /* black borders */
+    padding: 5px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #d3d3d3; /* light grey header */
+  }
+  
+  td {
+    background-color: #f0f0f0; /* lighter grey for cells */
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  select {
+    border: 1px solid #000000; /* black borders */
+    background-color: #ffffff;
+    padding: 2px;
+  }
+  
+  input[type="submit"] {
+    background-color: #008000; /* green background */
+    color: #ffffff;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #006400; /* darker green on hover */
+  }
+  
+  form {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  div {
+    margin-bottom: 20px;
+    border: 2px solid #000000; /* black border around each order */
+    padding: 10px;
+  }
+
+.side-navigation {
+    background-color: #000080; /* navy blue */
+    color: white;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+}
+
+.side-navigation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.side-navigation ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 8px;
+    text-align: left;
+}
+
+.side-navigation ul li a:hover {
+    background-color: #0000cd; /* lighter navy blue on hover */
+}
+/* Add this to your existing style.css */
+.main-content {
+    margin-left: 220px; /* adjust as per the width of your side navigation */
+    padding: 20px;
+}
