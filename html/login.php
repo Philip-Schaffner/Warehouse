@@ -1,10 +1,13 @@
 <?php
 session_start(); // Start the session at the beginning of the script
 
-$host = 'localhost'; // or your host
-$dbname = 'warehouse';
+$host = 'PSTHINKPAD\SQLEXPRESS'; // or your host
+$dbname = 'M321';
 $dbuser = 'pw_checker';
-$dbpass = 'pw_check';
+$dbpass = 'pw_checker';
+
+// Specify the character set
+$charset = 'UTF-8';
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,22 +15,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
+        // Change the connection string for MS SQL Server
+        $pdo = new PDO("sqlsrv:Server=$host;Database=$dbname", $dbuser, $dbpass);
         // Set the PDO error mode to exception
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $pdo->prepare("SELECT UserID, Username, Password FROM Users WHERE Username = :username");
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-        $stmt->execute();
+        $stmt->execute();	
 
-        if ($stmt->rowCount() == 1) {
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (password_verify($password, $user['Password'])) {
+		$user = $stmt->fetch(PDO::FETCH_ASSOC); // Attempt to fetch a row
+		
+        if ($user) {
+            if ($password == $user['Password']) {
                 // Password is correct, so start a new session
                 $_SESSION['loggedin'] = true;
                 $_SESSION['UserID'] = $user['UserID'];
                 $_SESSION['Username'] = $user['Username'];
-
+                
                 // Redirect user to welcome page
                 header("location: welcome.php");
             } else {
@@ -46,11 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Login</title>
 </head>
-
 <body>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div>
@@ -66,5 +69,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </form>
 </body>
-
 </html>
