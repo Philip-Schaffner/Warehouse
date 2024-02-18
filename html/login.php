@@ -15,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     try {
-        // Change the connection string for MS SQL Server
         $pdo = new PDO("sqlsrv:Server=$host;Database=$dbname", $dbuser, $dbpass);
         // Set the PDO error mode to exception
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

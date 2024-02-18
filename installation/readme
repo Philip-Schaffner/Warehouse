@@ -2,4 +2,5 @@
 2. PHP installieren, inkl. extensions sqlsrv und dbo-sqlsrv
 3. Apache/nginx installieren
 4. Inhalt von ../html in den base-folder des Webservers kopieren
-5. Anmeldung mit Test/test
+5. Connection-String in db.php und login.php setzen
+6. Anmeldung mit Test/test

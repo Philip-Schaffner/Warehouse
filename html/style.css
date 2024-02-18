@@ -92,12 +92,12 @@ body {
 .side-navigation ul li a:hover {
     background-color: #0000cd; /* lighter navy blue on hover */
 }
-/* Add this to your existing style.css */
+
 .main-content {
     margin-left: 220px; /* adjust as per the width of your side navigation */
     padding: 20px;
 }
-/* Add this to your existing style.css */
+
 .logout-form {
     position: absolute;
     bottom: 10%;

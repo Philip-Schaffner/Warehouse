@@ -6,7 +6,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
-include 'db.php'; // Include your database connection
+include 'db.php'; 
 
 // Check if the category ID is present
 if (isset($_GET['id'])) {

@@ -6,7 +6,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
-include 'db.php'; // Assume this includes the PDO connection setup
+include 'db.php';
 
 // Fetch order statuses for dropdown
 $statusesSql = "SELECT StatusID, Status FROM [dbo].[OrderStatuses]";

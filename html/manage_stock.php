@@ -6,7 +6,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
-include 'db.php'; // Assume this includes the PDO connection setup
+include 'db.php'; 
 
 // Handle stock update
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {

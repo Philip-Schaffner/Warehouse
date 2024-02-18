@@ -7,8 +7,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
-// Sample user greeting
-$userName = $_SESSION['Username'] ?? 'User'; // Replace with the actual session variable or method you use to retrieve the logged-in user's name
+$userName = $_SESSION['Username'] ?? 'User'; 
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +16,7 @@ $userName = $_SESSION['Username'] ?? 'User'; // Replace with the actual session 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Page</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Welcome, <?php echo htmlspecialchars($userName); ?>!</h1>

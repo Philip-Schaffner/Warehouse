@@ -6,7 +6,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 
-include 'db.php'; // Include your database connection
+include 'db.php';
 
 // Delete category
 if (isset($_GET['delete'])) {
