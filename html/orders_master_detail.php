@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 include 'db.php'; // Assume this includes the PDO connection setup
 
 // Fetch order statuses for dropdown
-$statusesSql = "SELECT StatusID, Status FROM [dbo].[Order_statuses]";
+$statusesSql = "SELECT StatusID, Status FROM [dbo].[OrderStatuses]";
 $statusesStmt = $conn->query($statusesSql);
 $statuses = $statusesStmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['updateStatus'])) {
 }
 
 // Fetch all orders
-$ordersSql = "SELECT o.OrderID, c.Firstname, c.Lastname, os.Status, o.OrderDate FROM [dbo].[Orders] o JOIN [dbo].[Clients] c ON o.ClientID = c.ClientID JOIN [dbo].[Order_statuses] os ON o.Status = os.StatusID";
+$ordersSql = "SELECT o.OrderID, c.Firstname, c.Lastname, os.Status, o.OrderDate FROM [dbo].[Orders] o JOIN [dbo].[Clients] c ON o.ClientID = c.ClientID JOIN [dbo].[OrderStatuses] os ON o.Status = os.StatusID";
 $ordersStmt = $conn->query($ordersSql);
 $orders = $ordersStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>

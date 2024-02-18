@@ -1,0 +1,4 @@
+1. DB erstellen mit warehouse_db.sql-script
+2. PHP installieren, inkl. extensions sqlsrv und dbo-sqlsrv
+3. Apache/nginx installieren
+4. Inhalt von ../html in den base-folder des Webservers kopieren
