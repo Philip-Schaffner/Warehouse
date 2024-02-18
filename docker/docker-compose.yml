@@ -6,5 +6,5 @@ services:
       - "80:80"
     volumes:
       - ./php.ini:/usr/local/etc/php/php.ini
-      - ./html:/var/www/html
+      - ../html:/var/www/html
       - ./php-logs:/var/log/php
