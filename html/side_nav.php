@@ -8,4 +8,9 @@
         <li><a href="orders_master_detail.php">Order Overview</a></li>
         <li><a href="manage_stock.php">Manage Stock</a></li>
     </ul>
+    <!-- Logout Button -->
+    <form action="logout.php" method="post" class="logout-form">
+        <button type="submit" name="logout">Logout</button>
+    </form>
 </nav>
+    

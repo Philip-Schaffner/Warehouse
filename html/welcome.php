@@ -1,10 +1,7 @@
 <?php
 // welcome.php
-// Place session_start() at the beginning of the file if you're using sessions.
 session_start();
 
-// Perform your check to see if the user is logged in
-// This is just a placeholder for your authentication check
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header('Location: login.php');
     exit;

@@ -97,3 +97,22 @@ body {
     margin-left: 220px; /* adjust as per the width of your side navigation */
     padding: 20px;
 }
+/* Add this to your existing style.css */
+.logout-form {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 30px); /* Adjust width according to padding */
+}
+
+.side-navigation button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff0000; /* Red color for logout to make it stand out */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.side-navigation button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
