@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 include 'db.php';
 
 // Fetch order statuses for dropdown
-$statusesSql = "SELECT StatusID, Status FROM [dbo].[OrderStatuses]";
+$statusesSql = "SELECT StatusID, Status FROM OrderStatuses";
 $statusesStmt = $conn->query($statusesSql);
 $statuses = $statusesStmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['updateStatus'])) {
     $orderId = $_POST['orderId'];
     $statusId = $_POST['status'];
 
-    $updateStatusSql = "UPDATE [dbo].[Orders] SET Status = ? WHERE OrderID = ?";
+    $updateStatusSql = "UPDATE Orders SET Status = ? WHERE OrderID = ?";
     $updateStatusStmt = $conn->prepare($updateStatusSql);
     $updateStatusStmt->execute([$statusId, $orderId]);
 
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['updateStatus'])) {
 }
 
 // Fetch all orders
-$ordersSql = "SELECT o.OrderID, c.Firstname, c.Lastname, os.Status, o.OrderDate FROM [dbo].[Orders] o JOIN [dbo].[Clients] c ON o.ClientID = c.ClientID JOIN [dbo].[OrderStatuses] os ON o.Status = os.StatusID";
+$ordersSql = "SELECT o.OrderID, c.Firstname, c.Lastname, os.Status, o.OrderDate FROM Orders o JOIN Clients c ON o.ClientID = c.ClientID JOIN OrderStatuses os ON o.Status = os.StatusID";
 $ordersStmt = $conn->query($ordersSql);
 $orders = $ordersStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -68,7 +68,7 @@ $orders = $ordersStmt->fetchAll(PDO::FETCH_ASSOC);
                 </tr>
                 <?php
                 // Fetch order details
-                $detailsSql = "SELECT ad.Quantity, a.Name FROM [dbo].[OrderDetails] ad JOIN [dbo].[Articles] a ON ad.ArticleID = a.ArticleID WHERE ad.OrderID = ?";
+                    $detailsSql = "SELECT ad.Quantity, a.Name FROM OrderDetails ad JOIN Articles a ON ad.ArticleID = a.ArticleID WHERE ad.OrderID = ?";
                 $detailsStmt = $conn->prepare($detailsSql);
                 $detailsStmt->execute([$order['OrderID']]);
                 $details = $detailsStmt->fetchAll(PDO::FETCH_ASSOC);

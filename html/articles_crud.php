@@ -10,7 +10,7 @@ include 'db.php'; // Include your database connection
 // Delete article
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $sql = "DELETE FROM [dbo].[Articles] WHERE ArticleID = ?";
+    $sql = "DELETE FROM Articles WHERE ArticleID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$id]);
     header("Location: articles_crud.php"); // Redirect to avoid resubmission
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $categoryID = $_POST['categoryID']; // Get category ID from the dropdown
     $price = $_POST['price'];
 
-    $sql = "INSERT INTO [dbo].[Articles] (Name, CategoryID, Price) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO Articles (Name, CategoryID, Price) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$name, $categoryID, $price]);
     header("Location: articles_crud.php"); // Redirect to refresh the page and list
@@ -31,12 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // List articles
-$sql = "SELECT ArticleID, Name, CategoryID, Price FROM [dbo].[Articles]";
+$sql = "SELECT ArticleID, Name, CategoryID, Price FROM Articles";
 $stmt = $conn->query($sql);
 $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Fetch categories for the dropdown
-$categorySql = "SELECT CategoryID, Name FROM [dbo].[Categories]";
+$categorySql = "SELECT CategoryID, Name FROM Categories";
 $categoryStmt = $conn->query($categorySql);
 $categories = $categoryStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>

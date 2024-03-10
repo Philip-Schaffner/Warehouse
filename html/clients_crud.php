@@ -11,7 +11,7 @@ include 'db.php';
 // Delete client
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $sql = "DELETE FROM [dbo].[Clients] WHERE ClientID = ?";
+    $sql = "DELETE FROM Clients WHERE ClientID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$id]);
     header("Location: clients_crud.php"); // Redirect to avoid resubmission
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
 
-    $sql = "INSERT INTO [dbo].[Clients] (Firstname, Lastname, Email, Phone) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO Clients (Firstname, Lastname, Email, Phone) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$firstname, $lastname, $email, $phone]);
     header("Location: clients_crud.php"); // Redirect to refresh the page and list
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // List clients
-$sql = "SELECT ClientID, Firstname, Lastname, Email, Phone FROM [dbo].[Clients]";
+$sql = "SELECT ClientID, Firstname, Lastname, Email, Phone FROM Clients";
 $stmt = $conn->query($sql);
 $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
