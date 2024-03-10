@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     $articleId = $_GET['id'];
 
     // Fetch article details
-    $sql = "SELECT ArticleID, Name, CategoryID, Price FROM [dbo].[Articles] WHERE ArticleID = ?";
+    $sql = "SELECT ArticleID, Name, CategoryID, Price FROM Articles WHERE ArticleID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$articleId]);
     $article = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
     }
 
     // Fetch categories for the dropdown
-    $categorySql = "SELECT CategoryID, Name FROM [dbo].[Categories]";
+    $categorySql = "SELECT CategoryID, Name FROM Categories";
     $categoryStmt = $conn->query($categorySql);
     $categories = $categoryStmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     $categoryID = $_POST['categoryID'];
     $price = $_POST['price'];
 
-    $updateSql = "UPDATE [dbo].[Articles] SET Name = ?, CategoryID = ?, Price = ? WHERE ArticleID = ?";
+    $updateSql = "UPDATE Articles SET Name = ?, CategoryID = ?, Price = ? WHERE ArticleID = ?";
     $updateStmt = $conn->prepare($updateSql);
     $updateStmt->execute([$name, $categoryID, $price, $articleId]);
 

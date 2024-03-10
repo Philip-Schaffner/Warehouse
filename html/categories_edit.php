@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     $categoryId = $_GET['id'];
 
     // Fetch category details
-    $sql = "SELECT CategoryID, Name, Description FROM [dbo].[Categories] WHERE CategoryID = ?";
+    $sql = "SELECT CategoryID, Name, Description FROM Categories WHERE CategoryID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$categoryId]);
     $category = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     $name = $_POST['name'];
     $description = $_POST['description'];
 
-    $updateSql = "UPDATE [dbo].[Categories] SET Name = ?, Description = ? WHERE CategoryID = ?";
+    $updateSql = "UPDATE Categories SET Name = ?, Description = ? WHERE CategoryID = ?";
     $updateStmt = $conn->prepare($updateSql);
     $updateStmt->execute([$name, $description, $categoryId]);
 

@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     $clientId = $_GET['id'];
 
     // Fetch client details
-    $sql = "SELECT ClientID, Firstname, Lastname, Email, Phone FROM [dbo].[Clients] WHERE ClientID = ?";
+    $sql = "SELECT ClientID, Firstname, Lastname, Email, Phone FROM Clients WHERE ClientID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$clientId]);
     $client = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
 
-    $updateSql = "UPDATE [dbo].[Clients] SET Firstname = ?, Lastname = ?, Email = ?, Phone = ? WHERE ClientID = ?";
+    $updateSql = "UPDATE Clients SET Firstname = ?, Lastname = ?, Email = ?, Phone = ? WHERE ClientID = ?";
     $updateStmt = $conn->prepare($updateSql);
     $updateStmt->execute([$firstname, $lastname, $email, $phone, $clientId]);
 

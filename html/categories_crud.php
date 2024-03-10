@@ -11,7 +11,7 @@ include 'db.php';
 // Delete category
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $sql = "DELETE FROM [dbo].[Categories] WHERE CategoryID = ?";
+    $sql = "DELETE FROM Categories WHERE CategoryID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$id]);
     header("Location: categories_crud.php"); // Redirect to avoid resubmission
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $description = $_POST['description'];
 
-    $sql = "INSERT INTO [dbo].[Categories] (Name, Description) VALUES (?, ?)";
+    $sql = "INSERT INTO Categories (Name, Description) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$name, $description]);
     header("Location: categories_crud.php"); // Redirect to refresh the page and list
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // List categories
-$sql = "SELECT CategoryID, Name, Description FROM [dbo].[Categories]";
+$sql = "SELECT CategoryID, Name, Description FROM Categories";
 $stmt = $conn->query($sql);
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>

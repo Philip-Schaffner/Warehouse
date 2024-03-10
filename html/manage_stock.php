@@ -12,7 +12,7 @@ include 'db.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     $stock = $_POST['stock'];
 
-    $updateSql = "UPDATE [dbo].[Stock] SET Stock = ? WHERE ArticleID = ? AND WarehouseID = ?";
+    $updateSql = "UPDATE Stock SET Stock = ? WHERE ArticleID = ? AND WarehouseID = ?";
     $updateStmt = $conn->prepare($updateSql);
     $updateStmt->execute([$stock, $articleId, $warehouseID]);
 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add'])) {
     $warehouseId = $_POST['new_warehouseId'];
     $stock = $_POST['new_stock'];
 
-    $addSql = "INSERT INTO [dbo].[Stock] (ArticleID, WarehouseID, Stock) VALUES (?, ?, ?)";
+    $addSql = "INSERT INTO Stock (ArticleID, WarehouseID, Stock) VALUES (?, ?, ?)";
     $addStmt = $conn->prepare($addSql);
     $addStmt->execute([$articleId, $warehouseId, $stock]);
 
@@ -35,16 +35,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add'])) {
 }
 
 // Fetch articles and warehouses for dropdowns
-$articlesSql = "SELECT ArticleID, Name FROM [dbo].[Articles]";
+$articlesSql = "SELECT ArticleID, Name FROM Articles";
 $articlesStmt = $conn->query($articlesSql);
 $articles = $articlesStmt->fetchAll(PDO::FETCH_ASSOC);
 
-$warehousesSql = "SELECT WarehouseID, Name FROM [dbo].[Warehouses]";
+$warehousesSql = "SELECT WarehouseID, Name FROM Warehouses";
 $warehousesStmt = $conn->query($warehousesSql);
 $warehouses = $warehousesStmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Fetch all stock entries
-$stocksSql = "SELECT s.ArticleID, s.WarehouseID, s.Stock, a.Name AS ArticleName, w.Name AS WarehouseName FROM [dbo].[Stock] s JOIN [dbo].[Articles] a ON s.ArticleID = a.ArticleID JOIN [dbo].[Warehouses] w ON s.WarehouseID = w.WarehouseID";
+$stocksSql = "SELECT s.ArticleID, s.WarehouseID, s.Stock, a.Name AS ArticleName, w.Name AS WarehouseName FROM Stock s JOIN Articles a ON s.ArticleID = a.ArticleID JOIN Warehouses w ON s.WarehouseID = w.WarehouseID";
 $stocksStmt = $conn->query($stocksSql);
 $stocks = $stocksStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
