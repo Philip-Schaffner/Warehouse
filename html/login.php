@@ -1,7 +1,7 @@
 <?php
 session_start(); // Start the session at the beginning of the script
 
-$host = 'PSTHINKPAD\SQLEXPRESS'; // or your host
+$host = 'localhost'; // or your host
 $dbname = 'M321';
 $dbuser = 'pw_checker';
 $dbpass = 'pw_checker';
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     try {
-        $pdo = new PDO("sqlsrv:Server=$host;Database=$dbname", $dbuser, $dbpass);
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
         // Set the PDO error mode to exception
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
