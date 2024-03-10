@@ -52,7 +52,7 @@ $orders = $ordersStmt->fetchAll(PDO::FETCH_ASSOC);
                 <label>Status:</label>
                 <select name="status">
                     <?php foreach ($statuses as $status): ?>
-                        <option value="<?php echo $status['StatusID']; ?>" <?php echo $status['StatusID'] == $order['Status'] ? 'selected' : ''; ?>>
+                            <option value="<?php echo $status['StatusID']; ?>" <?php echo $status['Status'] == $order['Status'] ? 'selected' : ''; ?>>
                             <?php echo htmlspecialchars($status['Status']); ?>
                         </option>
                     <?php endforeach; ?>
